@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 
 const sess = { 
   cookie : {
-        maxAge: 60 * 15 * 1000,
+        maxAge: 60 * 15 * 1000, //15 minute time out
         httpOnly: true,
         secure: false,
         sameSite: 'strict',

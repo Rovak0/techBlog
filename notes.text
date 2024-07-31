@@ -1,0 +1,20 @@
+Home page
+    displays without requiring login
+    Has navigation
+    Sounds like the page base has navigation built in
+
+login
+    If not logged in, trying to navigate will send you to login
+    Has login and sign up
+    Username and password
+
+Blog posts
+    Card shows title and created date
+    Full page shows all data and user data
+    Comments exist
+
+Dashboard
+    Has the user's blog posts and create a posts
+    Posting a new post refreshes the page
+    Posts can be updated or deleted
+    
