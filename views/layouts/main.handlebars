@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+    {{!-- <link rel="stylesheet" href="/css/stylesheet.css"> --}}
+    <title>TechnoTalk</title>
+</head>
+<body>
+    <header>
+        <h1 class="is-size-1 has-text-warning has-text-weight-bold	">Welcome to the TechnoTalk!</h1>
+        <h2 class="is-size-2 has-text-warning is-italic"> A place to talk about the tech your family won't listen to!</h2>
+    </header>
+    
+    <nav class="tabs is-size-4">   
+        <a href="/" class="box">Home</a>  
+        {{#if logged_in}}     
+        <a href="/api/recipes" class="box">Posts</a>      
+        <a href="/api/recipes/createrecipe" class="box">Dashboard</a>
+        <a href="/api/users" class="box">Users</a>
+        <button class="btn" id="logout">Logout</button>
+         {{/if}}
+         {{!-- put an else here to show a login --}}
+        </nav>
+ 
+
+    
+    <main>
+        {{{body}}}
+    </main>
+    
+     {{#if logged_in}}
+        <script src="/js/logout.js"></script>
+     {{/if}}
+</body>
+</html>
