@@ -15,6 +15,14 @@ const posts = [
     }
 ]
 
+const comments = [
+    {
+        text: 'First',
+        user_id: 1,
+        post_id: 1
+    }
+]
+
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
     const userInstances = await User.bulkCreate(users, {
@@ -23,6 +31,11 @@ const seedDatabase = async () => {
     });
 
     const postInstances = await Post.bulkCreate(posts,{
+        individualHooks: true,
+        returning: true,
+    });
+
+    const commentInstances = await Comment.bulkCreate(comments,{
         individualHooks: true,
         returning: true,
     });

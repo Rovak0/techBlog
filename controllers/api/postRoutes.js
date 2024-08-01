@@ -40,13 +40,13 @@ router.delete('/', async (req, res) => {
             }
         });
         if(!postData){
-            res.status(404).json({message : 'No post was found'}); //the message template is because json
+            res.status(404).json('No post was found'); //did not find
             return;
         }
-        res.status(200).json('Post deleted');
+        res.status(200).json('Post deleted'); 
     }
     catch(err) {
-        res.status(500).json(err);
+        res.status(500).json(err); //something went wrong
     }
 });
 
