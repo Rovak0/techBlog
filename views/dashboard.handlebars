@@ -1,10 +1,23 @@
 {{!-- postTotal is the variable name --}}
 
-{{!-- <nav class="tabs is-size-4">   
-  <a href="/api/recipes" class="box">Recipes</a>      
-  <a href="/api/users" class="box">Users</a>
-  <a href="/api/recipes/createrecipe" class="box">Create Recipe </a>
-</nav> --}}
+{{!-- should have create post above the existing posts --}}
+{{!-- it's a text box, text field, and a button --}}
+<h2 class="has-text-warning">Make a new post!</h2>
+<form class="form post-form box">
+   <div class="form-group">
+    <label for="title-post">title:</label>
+    <input class="form-input" type="text" id="title-post" />
+  </div>
+  <div class="form-group">
+    <label for="text-post">text:</label>
+    <textarea class="form-input" type="text" id="text-post" rows="5" cols="100"/> </textarea>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary is-underlined" type="submit">Post</button>
+  </div>
+</form>
+
+
 <h1 class="has-size-1">Your posts</h1>
   {{#each postTotal as |post|}}
   <div class="content box maindisplay" id="recipe">
@@ -12,3 +25,6 @@
     <p>{{post.text}}</p>
 </div>
   {{/each}}
+
+
+<script src="/js/posting.js"></script>
