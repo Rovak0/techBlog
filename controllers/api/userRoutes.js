@@ -5,21 +5,45 @@ const { User } = require('../../models');
 //manages login and creating users
 //and deleting users
 
+//get all users.  Won't be used except for testing
+router.get('/', async (req,res) => {
+    try {
+        const userData = await User.findAll();
+        const userTotal = [];
+        for(user of userData){
+            userTotal.push(user.dataValues);
+        }
+        res.json(userTotal);
+        
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+
 router.get('/login', (req,res) => {
     res.render('login');
 });
 
 router.post('/login', async (req,res) => {
-    //check for the username, then compare the password
+    //check for the name, then compare the password
     //both passed in as part of req.body
+    console.log(req.body);
     try{
-        const userLogin = await User.findOne({where : {name : req.body.name}});
+        const userLogin = await User.findOne({where: {name: req.body.name}});
         const passCheck = userLogin.checkPassword(req.body.password); //built in to user class
+        console.log(passCheck);
         if (passCheck){
-            req.session.logged_in = true;
-            req.session.user_id = userLogin.id;
-            req.session.save(() => {});
-            res.json({answer : 'pass'}); //lets the login page use true/false
+            // req.session.logged_in = true;
+            // req.session.user_id = userLogin.id;
+            // req.session.save(() => {});
+            // res.json({answer : 'pass'}); //lets the login page use true/false
+            res.json('Work');
+        }
+        else {
+            res.json('Login failed');
         }
     }
     catch(err) {
