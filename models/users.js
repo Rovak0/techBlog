@@ -17,6 +17,10 @@ User.init({
     password : {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    name : {
+        type: DataTypes.STRING,
+        allowNull: false,
     }
 },    
 {
@@ -30,7 +34,7 @@ User.init({
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: 'user',
     hooks : true
 }
 

@@ -16,13 +16,15 @@
     <nav class="tabs is-size-4">   
         <a href="/" class="box">Home</a>  
         {{#if logged_in}}     
-        <a href="/api/recipes" class="box">Posts</a>      
-        <a href="/api/recipes/createrecipe" class="box">Dashboard</a>
-        <a href="/api/users" class="box">Users</a>
-        <button class="btn" id="logout">Logout</button>
-         {{/if}}
-         {{!-- put an else here to show a login --}}
-        </nav>
+            <a href="/api/posts" class="box">Posts</a>      
+            <a href="/dash" class="box">Dashboard</a>
+            <a href="/api/users" class="box">Users</a>
+            <button class="btn" id="logout">Logout</button>
+            {{!-- put an else here to show a login --}}
+        {{else}}
+            <a href="api/users/login" class="box">Login</a>      
+        {{/if}}
+    </nav>
  
 
     

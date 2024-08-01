@@ -1,5 +1,47 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+//api/users
+//manages login and creating users
+//and deleting users
+
+router.get('/login', (req,res) => {
+    res.render('login');
+});
+
+router.post('/login', async (req,res) => {
+    //check for the username, then compare the password
+    //both passed in as part of req.body
+    try{
+        const userLogin = await User.findOne({where : {name : req.body.name}});
+        const passCheck = userLogin.checkPassword(req.body.password); //built in to user class
+        if (passCheck){
+            req.session.logged_in = true;
+            req.session.user_id = userLogin.id;
+            req.session.save(() => {});
+            res.json({answer : 'pass'}); //lets the login page use true/false
+        }
+    }
+    catch(err) {
+        res.status(404).json('User not found');
+    }
+});
+
+
+router.post('/create', async (req,res) => {
+    try{
+        const userData = await User.create(req.body);
+        //login the user so that they don't have to login right after creating an account
+        req.session.logged_in = true; 
+        req.session.user_id = userData.id;
+        req.session.save(() => {});
+        res.json(userData);
+    }
+    catch(err) {
+        res.json(err);
+    }
+})
+
+
 
 module.exports = router;
