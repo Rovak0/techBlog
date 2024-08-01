@@ -10,8 +10,14 @@ const users = [
 
 const posts = [
     {
-        text : 'My first post',
-        user_id : 1
+        title : 'My first post',
+        user_id : 1,
+        text: 'Full of hope'
+    },
+    {
+        title: 'Things are bad',
+        user_id : 1,
+        text: "Why doesn't the login work?"
     }
 ]
 

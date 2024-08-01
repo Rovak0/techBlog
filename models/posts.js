@@ -23,6 +23,10 @@ Post.init({
                 model: 'user',
                 key: 'id'
             }
+        },
+        title : {
+            type: DataTypes.STRING,
+            allowNull: false,
         }
     },    
     {

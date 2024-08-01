@@ -22,17 +22,19 @@ router.get('/', async (req,res) => {
     }
 });
 
-
+//feels out of place.  Renders the login page
 router.get('/login', (req,res) => {
     res.render('login');
 });
+
+
 
 router.post('/login', async (req,res) => {
     //check for the name, then compare the password
     //both passed in as part of req.body
     console.log(req.body);
     try{
-        const userLogin = await User.findOne({where: {name: req.body.name}});
+        const userLogin = await User.findAll({where: {name: req.body.name}});
         const passCheck = userLogin.checkPassword(req.body.password); //built in to user class
         console.log(passCheck);
         if (passCheck){

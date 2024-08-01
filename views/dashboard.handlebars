@@ -1,0 +1,14 @@
+{{!-- postTotal is the variable name --}}
+
+{{!-- <nav class="tabs is-size-4">   
+  <a href="/api/recipes" class="box">Recipes</a>      
+  <a href="/api/users" class="box">Users</a>
+  <a href="/api/recipes/createrecipe" class="box">Create Recipe </a>
+</nav> --}}
+<h1 class="has-size-1">Your posts</h1>
+  {{#each postTotal as |post|}}
+  <div class="content box maindisplay" id="recipe">
+    <h5 class="has-text-warning">{{post.title}}</h5>
+    <p>{{post.text}}</p>
+</div>
+  {{/each}}
