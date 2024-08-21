@@ -32,9 +32,9 @@ router.get('/login', (req,res) => {
 router.post('/login', async (req,res) => {
     //check for the name, then compare the password
     //both passed in as part of req.body
-    console.log(req.body);
     try{
         const userLogin = await User.findAll({where: {name: req.body.name}});
+        console.log(userLogin.checkPassword);
         const passCheck = userLogin.checkPassword(req.body.password); //built in to user class
         console.log(passCheck);
         if (passCheck){
@@ -42,7 +42,11 @@ router.post('/login', async (req,res) => {
             // req.session.user_id = userLogin.id;
             // req.session.save(() => {});
             // res.json({answer : 'pass'}); //lets the login page use true/false
-            res.json('Work');
+            req.session.logged_in = true; 
+            req.session.user_id = userLogin.id;
+            req.session.save(() => {});
+
+            res.json('Logged in');
         }
         else {
             res.json('Login failed');
@@ -66,7 +70,14 @@ router.post('/create', async (req,res) => {
     catch(err) {
         res.json(err);
     }
-})
+});
+
+router.post('/logout', async (req, res) => {
+    req.session.logged_in = false; 
+    req.session.user_id = null;
+    req.session.save(() => {});
+    res.json("Done");
+});
 
 
 
